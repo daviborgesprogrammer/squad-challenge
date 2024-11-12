@@ -1,4 +1,4 @@
-![image](assets/images/squad_brazil__logo.png)
+![image](assets/readme/squad_brazil__logo.png)
 # Squad Brasil Challenge
 **Buscador de Notas de Filmes no OMDB**
 
@@ -21,7 +21,9 @@ Boa Sorte!
 
 ## 🎨 Layout Proposto
 <p align="left">
- <img src="assets/readme/splash.png" width="200px">
+ <img src="assets/readme/home.png" width="120px">
+ <img src="assets/readme/detail.png" width="120px">
+ <img src="assets/readme/photo_movie.png" width="120px">
 </p>
 
 ## Versões do README
