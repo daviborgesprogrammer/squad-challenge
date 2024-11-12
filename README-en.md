@@ -4,11 +4,15 @@
 
 For this challenge you will have to consume the [OMDB API](http://www.omdbapi.com/) and present the result in a list meeting the following criteria:
 
-[ ] Each cell must have the image, name and rating of the film
-[ ] When selecting a cell, a detail screen should open with the image, name, rating, and synopsis of the film
-[ ] When selecting the movie image on the detail screen, the image must open in fullscreen
-[ ] The first screen must have a search field that filters the list
-[ ] The API can be called with a free key created on the website itself
+<u>**Mandatory technologies**</u>
+- [x] Flutter
+
+<u>**Requirements**</u>
+- [ ] Each cell must have the image, name and rating of the film
+- [ ] When selecting a cell, a detail screen should open with the image, name, rating, and synopsis of the film
+- [ ] When selecting the movie image on the detail screen, the image must open in fullscreen
+- [ ] The first screen must have a search field that filters the list
+- [ ] The API can be called with a free key created on the website itself
 
 Feel free to choose architecture, libs, layout and tests.
 To deliver the challenge, Fork this repository, add your files and make a Merge Request.
