@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/image_constant.dart';
 import '../../../../core/theme/text_styles.dart';
 import '../../../../core/utils/size_extensions.dart';
 import '../../../home/domain/entities/movie.dart';
+import 'zoom_poster_page.dart';
 
 class MovieDetailPage extends StatelessWidget {
   const MovieDetailPage({super.key});
@@ -21,7 +23,15 @@ class MovieDetailPage extends StatelessWidget {
           children: [
             Center(
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) {
+                      return ZoomPosterPage(movie.poster!);
+                    },
+                  );
+                },
                 child: SizedBox(
                   width: context.percentWidth(0.67),
                   child: Image.network(movie.poster!),

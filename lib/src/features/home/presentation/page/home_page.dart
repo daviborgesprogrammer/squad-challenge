@@ -65,17 +65,20 @@ class _HomePageState extends State<HomePage> with Loader, Messages {
                 return controller.movies.value.isEmpty
                     ? const EmptyBox()
                     : Expanded(
-                        child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 16,
-                            mainAxisSpacing: 16,
-                            childAspectRatio: 148 / 219,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 16),
+                          child: GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 16,
+                              mainAxisSpacing: 16,
+                              childAspectRatio: 148 / 219,
+                            ),
+                            itemCount: controller.movies.value.length,
+                            itemBuilder: (context, index) =>
+                                MovieTile(controller.movies.value[index]),
                           ),
-                          itemCount: controller.movies.value.length,
-                          itemBuilder: (context, index) =>
-                              MovieTile(controller.movies.value[index]),
                         ),
                       );
               },
