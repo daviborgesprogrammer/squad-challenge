@@ -11,7 +11,15 @@ class HomeRepositoryImpl implements HomeRepository {
 
   @override
   Future<List<Movie>> fetchMovies(String? title) async {
-    final listMovieModel = await remoteDataSource.fetchMovies(title);
-    return listMovieModel.map((lmm) => Movie.fromMovieModel(lmm)).toList();
+    final listImdbId = await remoteDataSource.fetchMovies(title);
+    final listMovie = <Movie>[];
+    for (var imdbID in listImdbId) {
+      listMovie.add(
+        Movie.fromMovieModel(
+          await remoteDataSource.fetchMovieDetail(imdbID),
+        ),
+      );
+    }
+    return listMovie;
   }
 }

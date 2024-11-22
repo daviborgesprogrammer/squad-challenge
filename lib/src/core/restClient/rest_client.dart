@@ -1,11 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 
+import '../constants/app_constants.dart';
+
 final class RestClient extends DioForNative {
   RestClient()
       : super(
           BaseOptions(
-            baseUrl: 'http://www.omdbapi.com/',
+            baseUrl: AppConstants.baseUrl,
             connectTimeout: const Duration(seconds: 10),
             receiveTimeout: const Duration(seconds: 60),
           ),

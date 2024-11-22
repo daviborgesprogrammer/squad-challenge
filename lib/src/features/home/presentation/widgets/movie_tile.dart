@@ -11,75 +11,61 @@ class MovieTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('${movie}');
-
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        // color: Colors.red,
-        // image: DecorationImage(
-        //   image: movie.poster != null
-        //       ? NetworkImage(movie.poster!)
-        // : AssetImage(
-        //     ImageConstant.posterNotFound,
-        //   ),
-        //   fit: BoxFit.cover,
-        // ),
-      ),
-      child: Stack(
-        children: [
-          CachedNetworkImage(
-            imageUrl: movie.poster!,
-            imageBuilder: (context, imageProvider) => Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                  image: imageProvider,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            placeholder: (context, url) => const CircularProgressIndicator(),
-            errorWidget: (context, url, error) =>
-                Image.asset(ImageConstant.posterNotFound),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.black26,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Material(
+        color: Colors.transparent,
+        child: Ink.image(
+          image: CachedNetworkImageProvider(
+            movie.poster!,
+          ), // Using CachedNetworkImageProvider
+          fit: BoxFit.cover,
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed('/movie', arguments: movie);
+            },
+            child: Stack(
               children: [
-                Text(
-                  movie.title ?? '',
-                  style: context.textStyles.textBold
-                      .copyWith(fontSize: 12, color: Colors.white),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.black26,
+                  ),
                 ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                      size: 14,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      '5.8',
-                      style: context.textStyles.textRegular
-                          .copyWith(fontSize: 12, color: Colors.white),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        movie.title ?? '',
+                        style: context.textStyles.textBold
+                            .copyWith(fontSize: 12, color: Colors.white),
+                      ),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star,
+                            color: Colors.yellow,
+                            size: 14,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            movie.imdbRating ?? '',
+                            style: context.textStyles.textRegular
+                                .copyWith(fontSize: 12, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

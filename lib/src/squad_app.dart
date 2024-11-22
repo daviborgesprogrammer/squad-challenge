@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/theme/theme_config.dart';
 import 'features/home/presentation/page/home_page.dart';
+import 'features/movieDetail/presentation/page/movie_detail_page.dart';
 
 class SquadApp extends StatelessWidget {
   const SquadApp({super.key});
@@ -15,6 +16,7 @@ class SquadApp extends StatelessWidget {
       initialRoute: '/home',
       routes: {
         '/home': (_) => const HomePage(),
+        '/movie': (_) => const MovieDetailPage(),
       },
     );
   }

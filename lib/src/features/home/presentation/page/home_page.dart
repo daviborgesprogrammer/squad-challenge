@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with Loader, Messages {
   HomeController controller = HomeController();
-  final debouncer = Debouncer(milliseconds: 500);
+  final debouncer = Debouncer(milliseconds: 1000);
 
   @override
   void initState() {
