@@ -22,6 +22,7 @@ Boa Sorte!
 ## 🎨 Layout Proposto
 <p align="left">
  <img src="assets/readme/home.png" width="120px">
+ <img src="assets/readme/Home_not_found.png" width="120px">
  <img src="assets/readme/detail.png" width="120px">
  <img src="assets/readme/photo_movie.png" width="120px">
 </p>
