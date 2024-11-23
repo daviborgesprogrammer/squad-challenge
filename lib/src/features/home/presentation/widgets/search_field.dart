@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/theme/text_styles.dart';
 
-class SearchField extends StatelessWidget {
+class SearchField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final TextEditingController? controller;
   const SearchField({this.onChanged, this.controller, super.key});
 
   @override
+  State<SearchField> createState() => _SearchFieldState();
+}
+
+class _SearchFieldState extends State<SearchField> {
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
       child: TextFormField(
-        controller: controller,
+        controller: widget.controller,
         cursorColor: Colors.white,
         style: context.textStyles.textRegular.copyWith(color: Colors.white),
         decoration: InputDecoration(
@@ -25,28 +30,21 @@ class SearchField extends StatelessWidget {
             Icons.search,
             color: Colors.white,
           ),
-          suffixIcon: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 8, 12, 8),
-                child: VerticalDivider(
-                  color: Colors.white, // Cor do divisor
-                  thickness: 1.0, // Espessura do divisor
-                  width: 1.0,
+          suffixIcon: widget.controller!.text.isEmpty
+              ? null
+              : IconButton(
+                  onPressed: () {
+                    setState(() {
+                      widget.controller!.clear();
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.mic,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
         ),
-        onChanged: onChanged,
+        onChanged: widget.onChanged,
       ),
     );
   }

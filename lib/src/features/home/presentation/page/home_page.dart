@@ -55,7 +55,9 @@ class _HomePageState extends State<HomePage> with Loader, Messages {
               controller: controller.searchText,
               onChanged: (value) {
                 debouncer.call(() async {
-                  await controller.setSearch(value);
+                  if (value.isNotEmpty) {
+                    await controller.setSearch(value);
+                  }
                 });
               },
             ),

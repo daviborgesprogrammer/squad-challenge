@@ -15,7 +15,7 @@ void main() async {
 }
 
 Future<void> setups() async {
-  await setupWindowSize();
+  // await setupWindowSize();
   await setupLocator();
 }
 
